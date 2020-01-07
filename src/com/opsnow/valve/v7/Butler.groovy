@@ -692,8 +692,8 @@ def npm_sonar(source_root = "", sonarqube = "") {
     withCredentials([string(credentialsId: 'npm-sonar', variable: 'sonar_token')]){
       source_root = get_source_root(source_root)
       sh """
-          sed -i -e \\"s,SONARQUBE,${sonarqube}\\" package.json
-          sed -i -e \\"s/SONAR_TOKEN/${sonar_token}\\" package.json
+          sed -i \"s,SONARQUBE,${sonarqube}\" package.json
+          sed -i \"s/SONAR_TOKEN/${sonar_token}\" package.json
       """
       dir("${source_root}") {
         sh "npm run sonar"
