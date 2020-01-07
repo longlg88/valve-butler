@@ -684,8 +684,7 @@ def npm_test(source_root = "") {
 def npm_sonar(source_root = "", sonarqube = "") {
     source_root = get_source_root(source_root)
     sh """
-        ls -al
-        cat package.json
+    echo 'SONAR_URL=${sonarqube}\nSONAR_TOKEN=${sonar_token}' >> .env
     """
     dir("${source_root}") {
       sh "npm run sonar"
