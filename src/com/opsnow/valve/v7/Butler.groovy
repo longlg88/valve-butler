@@ -685,7 +685,7 @@ def npm_sonar(source_root = "", sonarqube = "") {
     source_root = get_source_root(source_root)
     sh """
         ls -al
-        ls -al ~
+        cat package.json
     """
     dir("${source_root}") {
       sh "npm run sonar"
