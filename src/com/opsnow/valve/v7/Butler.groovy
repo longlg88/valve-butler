@@ -694,7 +694,6 @@ def npm_sonar(source_root = "", sonarqube = "") {
       sh """
       echo 'SONAR_TOKEN=$sonar_token\nSONARQUBE=$sonarqube' > .env && ./.env
       cat .env
-      echo '$SONAR_TOKEN, $SONARQUBE'
       """
       dir("${source_root}") {
         sh "npm run sonar"
