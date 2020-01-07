@@ -683,6 +683,7 @@ def npm_test(source_root = "") {
 
 def npm_sonar(source_root = "", sonarqube = "") {
     source_root = get_source_root(source_root)
+    ls -al
     dir("${source_root}") {
       sh "npm run sonar"
     }
