@@ -691,6 +691,9 @@ def npm_sonar(source_root = "", sonarqube = "") {
     }
     withCredentials([string(credentialsId: 'npm-sonar', variable: 'sonar_token')]){
       source_root = get_source_root(source_root)
+      sh """
+      echo $sonar_token, $sonarqube
+      """
       dir("${source_root}") {
         sh "npm run sonar"
       }
