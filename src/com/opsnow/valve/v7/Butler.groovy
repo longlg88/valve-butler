@@ -478,6 +478,10 @@ def deploy(cluster = "", namespace = "", sub_domain = "", profile = "", values_p
     // values_path
     if (!values_path) {
         values_path = ""
+        sh """
+            echo ${values_home}
+            echo ${namespace}
+        """
         if (values_home) {
             count = sh(script: "ls ${values_home}/${name} | grep '${namespace}.yaml' | wc -l", returnStdout: true).trim()
             if ("${count}" == "0") {
